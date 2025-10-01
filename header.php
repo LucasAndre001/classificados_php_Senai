@@ -13,7 +13,7 @@ include_once (__DIR__ . '/config/conexao.php');
 <body>
 <header>
     <nav class="navbar"> 
-        <a href="" class="logo">Classsificados SENAI</a>
+        <a href="/index.php" class="logo">Classsificados SENAI</a>
         <ul class="nav-links">
         <?php if (isset($_SESSION['usuario_id'])):?>
             <!--Links para usuário logado-->
