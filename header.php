@@ -17,13 +17,13 @@ include_once (__DIR__ . '/config/conexao.php');
         <ul class="nav-links">
         <?php if (isset($_SESSION['usuario_id'])):?>
             <!--Links para usuário logado-->
-            <li><a href="">Meus Anúncios</a></li>
-            <li><a href="">Criar Anúncios</a></li>
-            <li><a href="">Sair</a></li>
+            <li><a href="/anuncios/meus_anuncios.php">Meus Anúncios</a></li>
+            <li><a href="/anuncios/novo_anuncio.php">Criar Anúncios</a></li>
+            <li><a href="/auth/logout.php">Sair</a></li>
             <?php else: ?>
             <!--Links para visitantes-->
-            <li><a href="">Login</a></li>
-            <li><a href="">Cadastre-se</a></li>
+            <li><a href="/auth/login.php">Login</a></li>
+            <li><a href="/auth/cadastro.php">Cadastre-se</a></li>
             <?php endif;?>
         </ul>   
     </nav>
