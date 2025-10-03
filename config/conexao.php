@@ -13,12 +13,7 @@ $senha_db = "";
 $banco = "classificados_db";
 
 //cria a conexão
-$conexao = mysqli_connect(
-      $servidor,
-      $usuario_db,
-      $senha_db, 
-      $banco
-);
+$conexao = mysqli_connect($servidor, $usuario_db, $senha_db, $banco);
 
 //verifica conexão
 if (!$conexao) {
