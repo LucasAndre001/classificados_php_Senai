@@ -28,46 +28,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             exit();
         }
     }
-    //se o código chegou aqui, o login falhou
+    // Se o código chegou aqui, o login falhou
     $login_error = "Email ou senha inválido.";
 }
 if (isset($_SESSION['usuario_id'])){
-      header("Location: ../anuncios/meus_anuncios.php");
-      exit();
+    header("Location: ../anuncios/meus_anuncios.php");
+    exit();
 }
 
-include_once(__DIR__.'/../header.php');
+include_once(__DIR__ . '/../header.php');
 
-//O resto do arquivo continua igual...
-if(isset($login_error)){
-      echo "<p class='error'>$login_error</p>";
+// O resto do arquivo continua igual...
+if (isset($login_error)) {
+    echo "<p class='error'>$login_error</p>";
 }
 
-if(isset($_GET['sucesso']) && $_GET ['sucesso'] == 'cadastro'){
-      echo "<p class='sucess'>Cadastro realizado com sucesso! Faça o login para continuar.</p>";
+if (isset($_GET['sucesso']) && $_GET['sucesso'] == 'cadastro') {
+    echo "<p class='sucess'>Cadastro realizado com sucesso! Faça o login para continuar.</p>";
 }
 
-if(isset($_GET['erro']) && $_GET['erro'] == 'acesso_negado'){
-      echo "<p class='error'>Você precisa fazer o login para acessar essa página.</p>";
+if (isset($_GET['erro']) && $_GET['erro'] == 'acesso_negado') {
+    echo "<p class='error'>Você precisa fazer o login para acessar essa página.</p>";
 }
-
 ?>
 
 <div class="form-wrapper">
-      <h2>Acessar sua Conta</h2>
-      <form action="login.php" method="POST">
-            <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="email" name="email" required>
-            </div>
-            <div class="form-group">
-                  <label for="senha">Senha:</label>
-                  <input type="password" name="senha" required>
-            </div>
-            <button type="submit">Entrar</button>
-      </form>
+    <h2>Acessar sua Conta</h2>
+    <form action="login.php" method="POST">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" required>
+        </div>
+        <button type="submit">Entrar</button>
+    </form>
 </div>
 
 <?php 
-include_once(__DIR__.'/../footer.php');
+include_once(__DIR__ . '/../footer.php');
 ?>

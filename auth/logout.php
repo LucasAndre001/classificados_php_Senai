@@ -1,7 +1,7 @@
 <?php 
-session_start();
-session_unset();
-session_destroy();
+session_start(); //Inicia a sessão para poder destruí-la
+session_unset(); // Remove todas as variáveis da sessão
+session_destroy(); // Destrói a sessão
 
 header("Location: /mini_classificados/index.php");
 exit();

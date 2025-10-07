@@ -1,25 +1,33 @@
-<?php 
-//Habilita a exibição de todos os erros para depuração, excluir após concluir o site
-ini_set('display_erros', 1);
+<?php
+// Habilita a exibição de todos os erros para depuração
+ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//inicia a sessão para todo o site
+// Inicia a sessão para todo o site
 session_start();
 
-//Configurações do banco de dados
+// --- Configurações do Banco de Dados ---
 $servidor = "localhost";
 $usuario_db = "root";
-$senha_db = "";
+$senha_db = ""; // A senha do root no XAMPP geralmente é vazia
 $banco = "classificados_db";
 
-//cria a conexão
-$conexao = mysqli_connect($servidor, $usuario_db, $senha_db, $banco);
+// --- Cria a Conexão ---
+// CORREÇÃO ESTÁ AQUI: Usando a variável correta $senha_db
+$conexao = mysqli_connect($servidor, $usuario_db, $senha_db, $banco, 3307);
 
-//verifica conexão
+
+// --- Verifica a Conexão ---
 if (!$conexao) {
-      die("FALHA NA CONEXÃO: ".mysqli_connect_error());
+    // Se a conexão falhar, o script para aqui e mostra o erro exato.
+    // Ex: Nome do banco errado, senha incorreta, etc.
+    die("FALHA NA CONEXÃO: " . mysqli_connect_error());
 }
 
-//Define o charset para UTF-8 para evitar problemas com acentuação
+// Define o charset para UTF-8 para evitar problemas com acentuação
 mysqli_set_charset($conexao, "utf8");
 ?>
+
+<?php 
+// Define a URL base do projeto para facilitar a criação de links absolutos
+define('BASE_URL', '/mini_classificados'); ?>

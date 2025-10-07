@@ -2,7 +2,7 @@
 include_once(__DIR__ . '/../config/proteger.php');
 include_once(__DIR__ . '/../config/conexao.php');
 
-if ($_SESSION["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //Coleta os dados do formulário
     $id_anuncio = intval($_POST['id_anuncio']);
     $id_usuario = $_SESSION['usuario_id'];
@@ -16,14 +16,12 @@ if ($_SESSION["REQUEST_METHOD"] == "POST"){
     if ($id_anuncio > 0) {
         $sql = "UPDATE anuncios SET titulo = ?, id_categoria = ?, preco = ?, descricao = ? WHERE id = ? AND id_usuario = ?";
         $stmt = $conexao->prepare($sql);
-
         $stmt->bind_param("sidssi", $titulo, $id_categoria, $preco, $descricao, $id_anuncio, $id_usuario);
     } else {
         //Lógica de Criação
         $sql = "INSERT INTO anuncios (id_usuario, id_categoria, titulo, preco, descricao) VALUES(?, ?, ?, ?, ?)";
         $stmt = $conexao->prepare($sql);
-
-        $stmt->bind_param("iisds", $id_usuario, $id_categoria, $titulo, $descricao, $preco);
+        $stmt->bind_param("iisds", $id_usuario, $id_categoria, $titulo, $preco, $descricao);
     }
     // Executa a query preparada
     if ($stmt->execute()){

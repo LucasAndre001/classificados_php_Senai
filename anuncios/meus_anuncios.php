@@ -20,24 +20,25 @@ $usuario_id = $_SESSION['usuario_id'];
     $stmt->execute();
     $resultado = $stmt->get_result();
 
-    if($resultado->num_rows > 0){
-      while($anuncio = $resultado->fetch_assoc()){
-            echo "<div class='anuncio-card-manage'>";
-            echo "<h3>".htmlspecialchars($anuncio['titulo'])."</h3>";
-            echo "<p class='preco'>R$ ".number_format($anuncio['preco'], 2, ',','.')."</p>";
+    if ($resultado->num_rows > 0) {
+        while ($anuncio = $resultado->fetch_assoc()) {
+            echo "<div class='anuncio-card manage'>";
+            echo "<h3>" . htmlspecialchars($anuncio['titulo']) . "</h3>";
+            echo "<p class='preco'>R$ " . number_format($anuncio['preco'], 2,',','.'). "</p>";
             echo "<div class='actions'>";
-            echo "<a href='novo_anuncio.php?id=".$anuncio['id']."' class='edit'>Editar</a>";
-            echo "<a href='excluir_anuncio.php?id=".$anuncio['id']."' class='delete' onclick='return confirm(\"tem certeza\")'>Excluir</a>";
+            
+            echo "<a href='novo_anuncio.php?id=" . $anuncio['id']. "' class='edit'>Editar</a>";
+            
+            echo "<a href='excluir_anuncio.php?id=" . $anuncio['id']. "' class='delete' onclick='return confirm(\"Tem certeza\")'>Excluir</a>";
+            
             echo "</div>";
             echo "</div>";
-      }
-    } else{
-      echo "<p>Você ainda não tem nenhum anúncio. que tal criar um?</p>";
+        }
+    } else {
+        echo "<p>Você ainda não tem nenhum anúncio. Que tal criar um?</p>";
     }
     $stmt->close();
     ?>
 </div>
 
-<?php 
-include_once(__DIR__.'/../footer.php');
-?>
+<?php include_once(__DIR__. '/../footer.php');?>

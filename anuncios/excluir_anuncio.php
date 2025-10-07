@@ -14,22 +14,21 @@ if (isset($_GET['id'])) {
 
     //Executa a query
     if ($stmt->execute()) {
-      //Verifica se alguma linha foi realmente afetada
-      //se $stmt->affect_rows for 0, significa que o anúncio não pertencia ao usuario  
-      if ($stmt->affect_rows > 0) {
+        //Verifica se alguma linha foi realmente afetada
+        // Se $stmt->affect_rows for 0, significa que o anúncio não pertencia ao usuario
+        if ($stmt->affect_rows > 0) {
             header("Location: meus_anuncios.php?sucesso=excluido");
         } else {
             header("Location: meus_anuncios.php?erro=permissao");
         }
-    } else{
-      echo "Erro ao excluir o anúncio: ".$stmt->error;
+    } else {
+        echo "Erro ao excluir o anúncio: " . $stmt->error;
     }
     $stmt->close();
     $conexao->close();
     exit();
 } else{
-      header("Location: meus_anuncios.php");
-      exit();
-
+    header("Location: meus_anuncios.php");
+    exit();
 }
 ?>
