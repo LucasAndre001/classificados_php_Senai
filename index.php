@@ -14,7 +14,7 @@ include_once('header.php');
     c.nome AS categoria_nome,
     u.nome AS usuario_nome
     FROM anuncios a
-    JOIN categoria c ON a.id_categoria = c.id
+    JOIN categorias c ON a.id_categoria = c.id
     JOIN usuarios u ON a.id_usuario = u.id
     ORDER BY a.data_publicacao DESC";
 
